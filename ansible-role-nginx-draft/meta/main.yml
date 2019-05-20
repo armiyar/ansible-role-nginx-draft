@@ -1,0 +1,21 @@
+---
+galaxy_info:
+  role_name: nginx draft
+  author: armiya ranjbar
+  description: A beautiful nginx rule is clean
+  license: BSD
+  min_ansible_version: 2.7
+  platforms:
+    - name: EL
+      versions:
+        - 7
+
+  galaxy_tags:
+    - nginx
+    - web
+    - server
+    - draft
+    - education
+    - lint
+
+dependencies: []
