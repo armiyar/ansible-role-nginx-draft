@@ -40,17 +40,3 @@
       </body>
       </html>
     dest: /usr/share/nginx/html/index.html
-
-#insert/update/remove a block of multi-line text surrounded by customizable marker lines.
-
-- name: Insert/Update "Match User" configuration block in /etc/nginx/conf.d/default.conf
-  blockinfile:
-    path: /etc/nginx/conf.d/default.conf
-    insertbefore: " #error_page  404              /404.html;"
-    block: |
-      location /nginx_status {
-          stub_status;
-          allow 127.0.0.1;
-          deny all;
-      }
-      
