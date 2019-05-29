@@ -24,6 +24,7 @@
   unarchive:
     src: ~/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
     dest: ~/nginx-prometheus-exporter-0.3.0-linux-amd64/
+    remote_src: yes
 
 # template – Template a file out to a remote server
 - name: Template a file to /etc/files.conf
