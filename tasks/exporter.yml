@@ -1,0 +1,42 @@
+---
+- name: Ensure group "nginx-exp" exists
+  group:
+    name: nginx-exp
+    state: present
+
+- name: Add user 'nginx-exp' as member of 'nginx-exp' gourp
+  user:
+    name: nginx-exp
+    comment: "nginx user"
+    state: present
+    group: nginx-exp
+
+# get_url – Downloads files from HTTP, HTTPS, or FTP to node
+# The remote server must have direct access to the remote resource.
+- name: Download nginx-exporter
+  get_url:
+    url: https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v0.3.0/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
+    dest: ~/Downloads/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
+
+# unarchive – Unpacks an archive after (optionally)
+# copying it from the local machine
+- name: Extract /etc/nginx-exporter
+  unarchive:
+    src: ~/Downloads/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
+    dest: ~/Downloads/nginx-prometheus-exporter-0.3.0-linux-amd64/
+
+# template – Template a file out to a remote server
+- name: Template a file to /etc/files.conf
+  become: true
+  template:
+    src: template/nginx_exporter.service.j2
+    dest: /etc/systemd/system/nginx_exporter.service
+    owner: nginx-exp
+    group: nginx-exp
+    mode: 0644
+# restart and enable 'nginx_exporter.service'
+- name: restart and enable nginx_exporter.server
+  systemd:
+    state: restarted
+    enabled: true
+    name: nginx_exporter.server
