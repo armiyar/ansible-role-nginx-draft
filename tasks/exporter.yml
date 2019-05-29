@@ -23,7 +23,7 @@
 - name: Extract /etc/nginx-exporter
   unarchive:
     src: ~/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
-    dest: ~/nginx-prometheus-exporter-0.3.0-linux-amd64/
+    dest: ~/
     remote_src: yes
 
 # template – Template a file out to a remote server
