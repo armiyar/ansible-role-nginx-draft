@@ -54,3 +54,9 @@
           allow 127.0.0.1;
           deny all;
       }
+
+# Including and Importing Task Files
+# - import_tasks: common_tasks.yml
+# or
+- include_tasks: exporter.yml
+- include_tasks: uri_test.yml
