@@ -3,6 +3,7 @@
   group:
     name: nginx-exp
     state: present
+  become: true
 
 - name: Add user 'nginx-exp' as member of 'nginx-exp' gourp
   user:
@@ -10,7 +11,7 @@
     comment: "nginx user"
     state: present
     group: nginx-exp
-
+  become: true
 # get_url – Downloads files from HTTP, HTTPS, or FTP to node
 # The remote server must have direct access to the remote resource.
 - name: Download nginx-exporter
@@ -32,8 +33,8 @@
   template:
     src: template/nginx_exporter.service.j2
     dest: /etc/systemd/system/nginx_exporter.service
-    #owner: "{{ nginx_user }}"
-    #group: "{{ nginx_group }}"
+    owner: bin
+    group: wheel
     mode: 0644
   become: true
 # restart and enable 'nginx_exporter.service'
