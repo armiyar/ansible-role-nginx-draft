@@ -16,14 +16,14 @@
 - name: Download nginx-exporter
   get_url:
     url: https://github.com/nginxinc/nginx-prometheus-exporter/releases/download/v0.3.0/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
-    dest: ~/Downloads/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
+    dest: ~/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
 
 # unarchive – Unpacks an archive after (optionally)
 # copying it from the local machine
 - name: Extract /etc/nginx-exporter
   unarchive:
-    src: ~/Downloads/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
-    dest: ~/Downloads/nginx-prometheus-exporter-0.3.0-linux-amd64/
+    src: ~/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
+    dest: ~/nginx-prometheus-exporter-0.3.0-linux-amd64/
 
 # template – Template a file out to a remote server
 - name: Template a file to /etc/files.conf
