@@ -14,7 +14,7 @@
   uri:
     url: http://localhost:80
     method: GET
-    return_content: true
+    return_content: false
   fail:
     msg: 'nginx is not up'
   when: "webpage.status = !200"
