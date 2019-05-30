@@ -17,4 +17,4 @@
     return_content: false
   fail:
     msg: 'nginx is not up'
-  when: "webpage.status != 200"
+  when: "webpage.status = 200"
