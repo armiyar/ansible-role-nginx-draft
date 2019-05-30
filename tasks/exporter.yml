@@ -38,7 +38,7 @@
     owner: nginx-exp
     group: nginx-exp
     mode: 0644
-  become: true
+    
 # restart and enable 'nginx_exporter.service'
 - name: restart and enable nginx_exporter.server
   become: true
