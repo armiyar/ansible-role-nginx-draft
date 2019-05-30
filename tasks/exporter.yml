@@ -5,12 +5,13 @@
     state: present
   become: true
 
-- name: Add user 'nginx-exp' as member of 'nginx-exp' gourp
+- name: Add user 'nginx-exp' as member of 'nginx-exp' and 'wheel' gourps
   user:
     name: nginx-exp
+    shell: /bin/bash
     comment: "nginx user"
     state: present
-    group: nginx-exp
+    group: nginx-exp, wheel
   become: true
 # get_url – Downloads files from HTTP, HTTPS, or FTP to node
 # The remote server must have direct access to the remote resource.
@@ -22,9 +23,10 @@
 # unarchive – Unpacks an archive after (optionally)
 # copying it from the local machine
 - name: Extract /etc/nginx-exporter
+  become: true
   unarchive:
     src: ~/nginx-prometheus-exporter-0.3.0-linux-amd64.tar.gz
-    dest: ~/
+    dest: /usr/local/bin
     remote_src: true
 
 # template – Template a file out to a remote server
@@ -33,8 +35,8 @@
   template:
     src: template/nginx_exporter.service.j2
     dest: /etc/systemd/system/nginx_exporter.service
-    owner: bin
-    group: wheel
+    owner: nginx-exp
+    group: nginx-exp
     mode: 0644
   become: true
 # restart and enable 'nginx_exporter.service'
