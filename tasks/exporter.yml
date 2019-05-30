@@ -11,7 +11,7 @@
     shell: /bin/bash
     comment: "nginx user"
     state: present
-    group: nginx-exp, wheel
+    group: nginx-exp
   become: true
 # get_url – Downloads files from HTTP, HTTPS, or FTP to node
 # The remote server must have direct access to the remote resource.
