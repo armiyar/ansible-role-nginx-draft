@@ -26,7 +26,6 @@
   service:
     name: nginx
     state: started
-    enable: true
 
 - name: override default home page
   become: true
