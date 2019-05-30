@@ -41,7 +41,8 @@
   become: true
 # restart and enable 'nginx_exporter.service'
 - name: restart and enable nginx_exporter.server
+  become: true
   systemd:
-    state: restarted
+    state: started
     enabled: true
-    name: nginx_exporter.server
+    name: nginx_exporter
