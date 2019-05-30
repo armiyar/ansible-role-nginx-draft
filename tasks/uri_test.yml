@@ -7,14 +7,14 @@
     url: http://localhost:9113/metrics
     method: GET
     return_content: true
-    register: webpage
-    failed_when: "'nginx_up 1' not in webpage.content"
+  register: webpage
+  failed_when: "'nginx_up 1' not in webpage.content"
 
 - name: fail playbook when GET request to port 80 doesn't return status code 200.
   uri:
     url: http://localhost:80
     method: GET
     return_content: true
-    fail:
-      msg: 'nginx is not up'
-    when: webpage.status = !200
+  fail:
+    msg: 'nginx is not up'
+  when: "webpage.status = !200"
