@@ -18,7 +18,6 @@
   package:
     name: nginx
     state: present
-  notify: start nginx
 
 # temporarily disable handler
 - name: started and enable nginx
@@ -61,10 +60,11 @@
           allow 127.0.0.1;
           deny all;
       }
-    notify: start nginx
-
+  notify: start nginx
 # Including and Importing Task Files
 # - import_tasks: common_tasks.yml
 # or
+#
+- meta: flush_handlers
 - include_tasks: exporter.yml
 - include_tasks: uri_test.yml
