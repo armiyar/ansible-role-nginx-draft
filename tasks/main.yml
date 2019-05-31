@@ -61,6 +61,7 @@
           allow 127.0.0.1;
           deny all;
       }
+    notify: start nginx
 
 # Including and Importing Task Files
 # - import_tasks: common_tasks.yml
