@@ -11,7 +11,7 @@
     shell: /bin/bash
     comment: "nginx user"
     state: present
-    group: nginx-exp
+    group: nginx-exp, wheel
   become: true
 # get_url – Downloads files from HTTP, HTTPS, or FTP to node
 # The remote server must have direct access to the remote resource.
@@ -30,7 +30,7 @@
     remote_src: true
 
 # template – Template a file out to a remote server
-- name: Template a file to /etc/files.conf
+- name: Copy the nginx_exporter.service template
   become: true
   template:
     src: template/nginx_exporter.service.j2
@@ -43,6 +43,6 @@
 - name: restart and enable nginx_exporter.server
   become: true
   systemd:
+    name: nginx_exporter
     state: started
     enabled: true
-    name: nginx_exporter
