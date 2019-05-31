@@ -3,5 +3,5 @@
   become: true
   service:
     name: nginx
-    state: started
+    state: restarted
     enabled: true

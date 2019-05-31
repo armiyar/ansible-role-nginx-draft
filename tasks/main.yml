@@ -18,7 +18,7 @@
   package:
     name: nginx
     state: present
-# notify: start nginx
+  notify: start nginx
 
 # temporarily disable handler
 - name: started and enable nginx
